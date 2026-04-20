@@ -1,0 +1,282 @@
+{
+  "app_name": "भाड़ा24",
+  "app_tagline": "अपना व्यापार बढ़ाएं",
+
+  "common": {
+    "ok": "ठीक है",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "back": "वापस",
+    "next": "अगला",
+    "submit": "जमा करें",
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "success": "सफलता",
+    "retry": "पुनः प्रयास",
+    "confirm": "पुष्टि करें",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "close": "बंद करें",
+    "search": "खोजें",
+    "select": "चुनें",
+    "upload": "अपलोड करें",
+    "remove": "हटाएं",
+    "optional": "वैकल्पिक",
+    "required": "आवश्यक",
+    "na": "उपलब्ध नहीं",
+    "view_all": "सभी देखें",
+    "no_data": "कोई डेटा नहीं मिला",
+    "something_went_wrong": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।"
+  },
+
+  "auth": {
+    "login": "लॉगिन",
+    "logout": "लॉगआउट",
+    "register": "पंजीकरण",
+    "sign_up": "साइन अप करें",
+    "phone_number": "फोन नंबर",
+    "phone_hint": "10 अंकों का मोबाइल नंबर दर्ज करें",
+    "otp": "ओटीपी",
+    "otp_hint": "6 अंकों का ओटीपी दर्ज करें",
+    "send_otp": "ओटीपी भेजें",
+    "resend_otp": "ओटीपी पुनः भेजें",
+    "verify_otp": "ओटीपी सत्यापित करें",
+    "resend_in": "{seconds} सेकंड में पुनः भेजें",
+    "phone_validation_failed": "मोबाइल नंबर पंजीकृत नहीं है। कृपया पहले साइन अप करें।",
+    "otp_sent": "ओटीपी सफलतापूर्वक भेजा गया",
+    "otp_verified": "ओटीपी सफलतापूर्वक सत्यापित",
+    "login_failed": "लॉगिन विफल। कृपया पुनः प्रयास करें।",
+    "register_success": "पंजीकरण सफल! कृपया लॉगिन करें।",
+    "register_failed": "पंजीकरण विफल। कृपया पुनः प्रयास करें।",
+    "logout_success": "सफलतापूर्वक लॉगआउट",
+    "too_many_requests": "बहुत अधिक प्रयास। बाद में पुनः प्रयास करें।",
+    "invalid_phone": "अमान्य फोन नंबर।",
+    "forgot_password": "पासवर्ड भूल गए",
+    "reset_password": "पासवर्ड रीसेट करें",
+    "welcome_back": "वापस स्वागत है!",
+    "new_user": "नए उपयोगकर्ता?",
+    "already_have_account": "पहले से खाता है?",
+    "name": "पूरा नाम",
+    "name_hint": "अपना पूरा नाम दर्ज करें",
+    "email": "ईमेल पता",
+    "email_hint": "अपना ईमेल पता दर्ज करें"
+  },
+
+  "dashboard": {
+    "title": "डैशबोर्ड",
+    "welcome": "स्वागत है",
+    "good_morning": "सुप्रभात",
+    "good_afternoon": "नमस्कार",
+    "good_evening": "शुभ संध्या",
+    "your_rating": "आपकी रेटिंग",
+    "membership_status": "सदस्यता स्थिति",
+    "active": "सक्रिय",
+    "inactive": "निष्क्रिय",
+    "quick_actions": "त्वरित कार्य",
+    "leads_cta": "आपके नए लीड्स प्रतीक्षा कर रहे हैं!",
+    "view_leads": "लीड्स देखें"
+  },
+
+  "profile": {
+    "title": "मेरी प्रोफ़ाइल",
+    "edit_profile": "प्रोफ़ाइल संपादित करें",
+    "business_name": "व्यापार का नाम",
+    "business_name_hint": "अपने व्यापार का नाम दर्ज करें",
+    "address": "पता",
+    "address_hint": "अपना पता दर्ज करें",
+    "city": "शहर",
+    "city_hint": "अपना शहर दर्ज करें",
+    "state": "राज्य",
+    "state_hint": "अपना राज्य दर्ज करें",
+    "pincode": "पिनकोड",
+    "pincode_hint": "पिनकोड दर्ज करें",
+    "description": "व्यापार के बारे में",
+    "description_hint": "अपने व्यापार का विवरण दें",
+    "profile_updated": "प्रोफ़ाइल सफलतापूर्वक अपडेट की गई",
+    "profile_update_failed": "प्रोफ़ाइल अपडेट करने में विफल",
+    "upload_photo": "फ़ोटो अपलोड करें",
+    "change_photo": "फ़ोटो बदलें"
+  },
+
+  "services": {
+    "title": "मेरी सेवाएं",
+    "add_service": "सेवा जोड़ें",
+    "add_listing_service": "लिस्टिंग सेवा जोड़ें",
+    "edit_service": "सेवा संपादित करें",
+    "service_name": "सेवा का नाम",
+    "service_name_hint": "सेवा का नाम दर्ज करें",
+    "category": "श्रेणी",
+    "select_category": "श्रेणी चुनें",
+    "subcategory": "उपश्रेणी",
+    "select_subcategory": "उपश्रेणी चुनें",
+    "price": "मूल्य",
+    "price_hint": "मूल्य दर्ज करें",
+    "price_unit": "मूल्य इकाई",
+    "description": "सेवा विवरण",
+    "description_hint": "अपनी सेवा का विवरण दें",
+    "generate_description": "AI से उत्पन्न करें",
+    "location": "सेवा स्थान",
+    "images": "सेवा चित्र",
+    "add_image": "चित्र जोड़ें",
+    "service_added": "सेवा सफलतापूर्वक जोड़ी गई",
+    "service_updated": "सेवा सफलतापूर्वक अपडेट की गई",
+    "service_deleted": "सेवा सफलतापूर्वक हटाई गई",
+    "delete_confirm": "क्या आप वाकई इस सेवा को हटाना चाहते हैं?",
+    "no_services": "कोई सेवा नहीं मिली। अपनी पहली सेवा जोड़ें!",
+    "manage_services": "सेवाएं प्रबंधित करें",
+    "listing_services": "लिस्टिंग सेवाएं",
+    "view_services": "मेरी सेवाएं देखें",
+    "booking_status": "बुकिंग स्थिति",
+    "update_status": "स्थिति अपडेट करें",
+    "status_updated": "स्थिति सफलतापूर्वक अपडेट की गई"
+  },
+
+  "bookings": {
+    "title": "बुकिंग",
+    "booking_calendar": "बुकिंग कैलेंडर",
+    "mark_busy": "व्यस्त चिह्नित करें",
+    "available": "उपलब्ध",
+    "busy": "व्यस्त",
+    "booked": "बुक्ड",
+    "upcoming": "आगामी",
+    "past": "पूर्व",
+    "no_bookings": "कोई बुकिंग नहीं मिली",
+    "from_date": "से तारीख",
+    "to_date": "तक तारीख",
+    "select_date": "तारीख चुनें",
+    "reason": "कारण",
+    "reason_hint": "कारण दर्ज करें (वैकल्पिक)",
+    "mark_busy_success": "तारीखें व्यस्त के रूप में सफलतापूर्वक चिह्नित",
+    "mark_busy_failed": "तारीखें व्यस्त के रूप में चिह्नित करने में विफल",
+    "delete_exception": "व्यस्त तारीख हटाएं",
+    "delete_exception_confirm": "क्या आप वाकई इस व्यस्त तारीख को हटाना चाहते हैं?",
+    "exception_deleted": "व्यस्त तारीख सफलतापूर्वक हटाई गई"
+  },
+
+  "membership": {
+    "title": "सदस्यता",
+    "current_plan": "वर्तमान योजना",
+    "plan_name": "योजना का नाम",
+    "start_date": "प्रारंभ तारीख",
+    "end_date": "समाप्ति तारीख",
+    "status": "स्थिति",
+    "active": "सक्रिय",
+    "expired": "समाप्त",
+    "not_subscribed": "सदस्यता नहीं",
+    "free_plan": "निःशुल्क योजना",
+    "activate_free": "निःशुल्क सदस्यता सक्रिय करें",
+    "activate_success": "निःशुल्क सदस्यता सक्रिय!",
+    "activate_failed": "सदस्यता सक्रिय करने में विफल",
+    "upgrade": "योजना अपग्रेड करें",
+    "benefits": "सदस्यता के लाभ",
+    "days_remaining": "{days} दिन शेष"
+  },
+
+  "notifications": {
+    "title": "सूचनाएं",
+    "mark_all_read": "सभी पढ़े हुए चिह्नित करें",
+    "clear_all": "सभी हटाएं",
+    "no_notifications": "अभी तक कोई सूचना नहीं",
+    "new_notification": "नई सूचना",
+    "clear_confirm": "क्या आप वाकई सभी सूचनाएं हटाना चाहते हैं?"
+  },
+
+  "leads": {
+    "title": "लीड्स",
+    "customer_name": "ग्राहक का नाम",
+    "phone": "फोन",
+    "email": "ईमेल",
+    "service": "सेवा",
+    "category": "श्रेणी",
+    "city": "शहर",
+    "interaction_type": "इंटरेक्शन प्रकार",
+    "date": "तारीख",
+    "no_leads": "कोई लीड नहीं मिला",
+    "call": "कॉल करें",
+    "whatsapp": "व्हाट्सएप",
+    "view_profile": "प्रोफ़ाइल देखें"
+  },
+
+  "settings": {
+    "title": "सेटिंग्स",
+    "language": "भाषा",
+    "select_language": "भाषा चुनें",
+    "english": "अंग्रेज़ी",
+    "hindi": "हिन्दी",
+    "notifications": "सूचनाएं",
+    "mobile_notifications": "मोबाइल सूचनाएं",
+    "email_notifications": "ईमेल सूचनाएं",
+    "notification_settings_saved": "सूचना सेटिंग्स सहेजी गई",
+    "account": "खाता",
+    "deactivate_account": "खाता निष्क्रिय करें",
+    "deactivate_confirm": "क्या आप वाकई अपना खाता निष्क्रिय करना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।",
+    "account_deactivated": "खाता सफलतापूर्वक निष्क्रिय",
+    "change_mobile": "मोबाइल नंबर बदलें",
+    "privacy_policy": "गोपनीयता नीति",
+    "terms_conditions": "नियम एवं शर्तें",
+    "contact_support": "सहायता से संपर्क करें"
+  },
+
+  "manage": {
+    "title": "प्रबंधन",
+    "manage_services": "सेवाएं प्रबंधित करें",
+    "booking_calendar": "बुकिंग कैलेंडर",
+    "mark_busy": "व्यस्त चिह्नित करें",
+    "membership": "सदस्यता",
+    "leads": "लीड्स"
+  },
+
+  "contact": {
+    "title": "संपर्क करें",
+    "call_us": "कॉल करें",
+    "email_us": "ईमेल करें",
+    "whatsapp_us": "व्हाट्सएप करें",
+    "support_hours": "सहायता का समय",
+    "support_hours_value": "सोम-शनि, सुबह 9:00 - शाम 6:00"
+  },
+
+  "privacy_policy": {
+    "title": "गोपनीयता नीति"
+  },
+
+  "terms_conditions": {
+    "title": "नियम एवं शर्तें"
+  },
+
+  "change_mobile": {
+    "title": "मोबाइल नंबर बदलें",
+    "new_number": "नया मोबाइल नंबर",
+    "new_number_hint": "नया 10 अंकों का मोबाइल नंबर दर्ज करें",
+    "number_changed": "मोबाइल नंबर सफलतापूर्वक बदला गया"
+  },
+
+  "image_upload": {
+    "title": "चित्र अपलोड करें",
+    "camera": "कैमरा",
+    "gallery": "गैलरी",
+    "uploading": "चित्र अपलोड हो रहा है...",
+    "upload_success": "चित्र सफलतापूर्वक अपलोड",
+    "upload_failed": "चित्र अपलोड करने में विफल",
+    "select_source": "चित्र स्रोत चुनें"
+  },
+
+  "voice_search": {
+    "listening": "सुन रहा है...",
+    "tap_to_speak": "बोलने के लिए टैप करें",
+    "not_available": "वॉयस सर्च उपलब्ध नहीं"
+  },
+
+  "errors": {
+    "network": "नेटवर्क त्रुटि। कृपया अपना कनेक्शन जांचें।",
+    "timeout": "अनुरोध का समय समाप्त। कृपया पुनः प्रयास करें।",
+    "unauthorized": "सत्र समाप्त। कृपया पुनः लॉगिन करें।",
+    "server": "सर्वर त्रुटि। कृपया बाद में पुनः प्रयास करें।",
+    "validation_phone": "कृपया एक वैध 10 अंकों का मोबाइल नंबर दर्ज करें",
+    "validation_email": "कृपया एक वैध ईमेल पता दर्ज करें",
+    "validation_name": "नाम कम से कम 2 अक्षरों का होना चाहिए",
+    "validation_otp": "कृपया एक वैध 6 अंकों का ओटीपी दर्ज करें",
+    "validation_price": "कृपया एक वैध मूल्य दर्ज करें"
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "app_name": "Bhada24",
+  "app_tagline": "Grow Your Business",
+
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "retry": "Retry",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "close": "Close",
+    "search": "Search",
+    "select": "Select",
+    "upload": "Upload",
+    "remove": "Remove",
+    "optional": "Optional",
+    "required": "Required",
+    "na": "N/A",
+    "view_all": "View All",
+    "no_data": "No data found",
+    "something_went_wrong": "Something went wrong. Please try again."
+  },
+
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "sign_up": "Sign Up",
+    "phone_number": "Phone Number",
+    "phone_hint": "Enter 10-digit mobile number",
+    "otp": "OTP",
+    "otp_hint": "Enter 6-digit OTP",
+    "send_otp": "Send OTP",
+    "resend_otp": "Resend OTP",
+    "verify_otp": "Verify OTP",
+    "resend_in": "Resend in {seconds}s",
+    "phone_validation_failed": "Mobile number not registered. Please sign up first.",
+    "otp_sent": "OTP sent successfully",
+    "otp_verified": "OTP verified successfully",
+    "login_failed": "Login failed. Please try again.",
+    "register_success": "Registration successful! Please login.",
+    "register_failed": "Registration failed. Please try again.",
+    "logout_success": "Logged out successfully",
+    "too_many_requests": "Too many attempts. Try again later.",
+    "invalid_phone": "Invalid phone number.",
+    "forgot_password": "Forgot Password",
+    "reset_password": "Reset Password",
+    "welcome_back": "Welcome Back!",
+    "new_user": "New User?",
+    "already_have_account": "Already have an account?",
+    "name": "Full Name",
+    "name_hint": "Enter your full name",
+    "email": "Email Address",
+    "email_hint": "Enter your email address"
+  },
+
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "good_morning": "Good Morning",
+    "good_afternoon": "Good Afternoon",
+    "good_evening": "Good Evening",
+    "your_rating": "Your Rating",
+    "membership_status": "Membership Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "quick_actions": "Quick Actions",
+    "leads_cta": "You have new leads waiting!",
+    "view_leads": "View Leads"
+  },
+
+  "profile": {
+    "title": "My Profile",
+    "edit_profile": "Edit Profile",
+    "business_name": "Business Name",
+    "business_name_hint": "Enter your business name",
+    "address": "Address",
+    "address_hint": "Enter your address",
+    "city": "City",
+    "city_hint": "Enter your city",
+    "state": "State",
+    "state_hint": "Enter your state",
+    "pincode": "Pincode",
+    "pincode_hint": "Enter pincode",
+    "description": "About Your Business",
+    "description_hint": "Describe your business",
+    "profile_updated": "Profile updated successfully",
+    "profile_update_failed": "Failed to update profile",
+    "upload_photo": "Upload Photo",
+    "change_photo": "Change Photo"
+  },
+
+  "services": {
+    "title": "My Services",
+    "add_service": "Add Service",
+    "add_listing_service": "Add Listing Service",
+    "edit_service": "Edit Service",
+    "service_name": "Service Name",
+    "service_name_hint": "Enter service name",
+    "category": "Category",
+    "select_category": "Select Category",
+    "subcategory": "Subcategory",
+    "select_subcategory": "Select Subcategory",
+    "price": "Price",
+    "price_hint": "Enter price",
+    "price_unit": "Price Unit",
+    "description": "Service Description",
+    "description_hint": "Describe your service",
+    "generate_description": "Generate with AI",
+    "location": "Service Location",
+    "images": "Service Images",
+    "add_image": "Add Image",
+    "service_added": "Service added successfully",
+    "service_updated": "Service updated successfully",
+    "service_deleted": "Service deleted successfully",
+    "delete_confirm": "Are you sure you want to delete this service?",
+    "no_services": "No services found. Add your first service!",
+    "manage_services": "Manage Services",
+    "listing_services": "Listing Services",
+    "view_services": "View My Services",
+    "booking_status": "Booking Status",
+    "update_status": "Update Status",
+    "status_updated": "Status updated successfully"
+  },
+
+  "bookings": {
+    "title": "Bookings",
+    "booking_calendar": "Booking Calendar",
+    "mark_busy": "Mark Busy",
+    "available": "Available",
+    "busy": "Busy",
+    "booked": "Booked",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "no_bookings": "No bookings found",
+    "from_date": "From Date",
+    "to_date": "To Date",
+    "select_date": "Select Date",
+    "reason": "Reason",
+    "reason_hint": "Enter reason (optional)",
+    "mark_busy_success": "Dates marked as busy successfully",
+    "mark_busy_failed": "Failed to mark dates as busy",
+    "delete_exception": "Remove Busy Date",
+    "delete_exception_confirm": "Are you sure you want to remove this busy date?",
+    "exception_deleted": "Busy date removed successfully"
+  },
+
+  "membership": {
+    "title": "Membership",
+    "current_plan": "Current Plan",
+    "plan_name": "Plan Name",
+    "start_date": "Start Date",
+    "end_date": "End Date",
+    "status": "Status",
+    "active": "Active",
+    "expired": "Expired",
+    "not_subscribed": "Not Subscribed",
+    "free_plan": "Free Plan",
+    "activate_free": "Activate Free Membership",
+    "activate_success": "Free membership activated!",
+    "activate_failed": "Failed to activate membership",
+    "upgrade": "Upgrade Plan",
+    "benefits": "Membership Benefits",
+    "days_remaining": "{days} days remaining"
+  },
+
+  "notifications": {
+    "title": "Notifications",
+    "mark_all_read": "Mark All as Read",
+    "clear_all": "Clear All",
+    "no_notifications": "No notifications yet",
+    "new_notification": "New notification",
+    "clear_confirm": "Are you sure you want to clear all notifications?"
+  },
+
+  "leads": {
+    "title": "Leads",
+    "customer_name": "Customer Name",
+    "phone": "Phone",
+    "email": "Email",
+    "service": "Service",
+    "category": "Category",
+    "city": "City",
+    "interaction_type": "Interaction Type",
+    "date": "Date",
+    "no_leads": "No leads found",
+    "call": "Call",
+    "whatsapp": "WhatsApp",
+    "view_profile": "View Profile"
+  },
+
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "select_language": "Select Language",
+    "english": "English",
+    "hindi": "Hindi",
+    "notifications": "Notifications",
+    "mobile_notifications": "Mobile Notifications",
+    "email_notifications": "Email Notifications",
+    "notification_settings_saved": "Notification settings saved",
+    "account": "Account",
+    "deactivate_account": "Deactivate Account",
+    "deactivate_confirm": "Are you sure you want to deactivate your account? This action cannot be undone.",
+    "account_deactivated": "Account deactivated successfully",
+    "change_mobile": "Change Mobile Number",
+    "privacy_policy": "Privacy Policy",
+    "terms_conditions": "Terms & Conditions",
+    "contact_support": "Contact Support"
+  },
+
+  "manage": {
+    "title": "Manage",
+    "manage_services": "Manage Services",
+    "booking_calendar": "Booking Calendar",
+    "mark_busy": "Mark Busy",
+    "membership": "Membership",
+    "leads": "Leads"
+  },
+
+  "contact": {
+    "title": "Contact Us",
+    "call_us": "Call Us",
+    "email_us": "Email Us",
+    "whatsapp_us": "WhatsApp Us",
+    "support_hours": "Support Hours",
+    "support_hours_value": "Mon-Sat, 9:00 AM - 6:00 PM"
+  },
+
+  "privacy_policy": {
+    "title": "Privacy Policy"
+  },
+
+  "terms_conditions": {
+    "title": "Terms & Conditions"
+  },
+
+  "change_mobile": {
+    "title": "Change Mobile Number",
+    "new_number": "New Mobile Number",
+    "new_number_hint": "Enter new 10-digit mobile number",
+    "number_changed": "Mobile number changed successfully"
+  },
+
+  "image_upload": {
+    "title": "Upload Image",
+    "camera": "Camera",
+    "gallery": "Gallery",
+    "uploading": "Uploading image...",
+    "upload_success": "Image uploaded successfully",
+    "upload_failed": "Failed to upload image",
+    "select_source": "Select Image Source"
+  },
+
+  "voice_search": {
+    "listening": "Listening...",
+    "tap_to_speak": "Tap to speak",
+    "not_available": "Voice search not available"
+  },
+
+  "errors": {
+    "network": "Network error. Please check your connection.",
+    "timeout": "Request timed out. Please try again.",
+    "unauthorized": "Session expired. Please login again.",
+    "server": "Server error. Please try again later.",
+    "validation_phone": "Please enter a valid 10-digit mobile number",
+    "validation_email": "Please enter a valid email address",
+    "validation_name": "Name must be at least 2 characters",
+    "validation_otp": "Please enter a valid 6-digit OTP",
+    "validation_price": "Please enter a valid price"
+  }
+}

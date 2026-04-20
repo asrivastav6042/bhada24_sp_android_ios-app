@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "200383906913",
+    "firebase_url": "https://bhada24-96846-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bhada24-96846",
+    "storage_bucket": "bhada24-96846.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200383906913:android:9b900e22ffb7335c045620",
+        "android_client_info": {
+          "package_name": "com.bhada24.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "200383906913-679skhifm10kktdbrs12m2vbescu41gc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bhada24.com",
+            "certificate_hash": "efcd92ab494485fa89e32cff35164631f6ba9aa0"
+          }
+        },
+        {
+          "client_id": "200383906913-ej7o4ikhplon1dr933jvgrunvkm6siu0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGcvujOxtj8JpQepCVeCf79g9rRaeZfBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "200383906913-ej7o4ikhplon1dr933jvgrunvkm6siu0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "200383906913-den4snk52mafsl23qoo13gckitk7f05g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sp.bhada24"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200383906913:android:52a9b0b0b39309b9045620",
+        "android_client_info": {
+          "package_name": "sp.bhada24.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "200383906913-ej7o4ikhplon1dr933jvgrunvkm6siu0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGcvujOxtj8JpQepCVeCf79g9rRaeZfBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "200383906913-ej7o4ikhplon1dr933jvgrunvkm6siu0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "200383906913-den4snk52mafsl23qoo13gckitk7f05g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sp.bhada24"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
