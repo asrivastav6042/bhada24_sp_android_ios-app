@@ -22,37 +22,96 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Firebase
-  await FirebaseConfig.initialize();
+  runApp(const _BootstrapApp());
+}
 
-  // Setup dependency injection
-  await setupServiceLocator();
+class _BootstrapApp extends StatefulWidget {
+  const _BootstrapApp();
 
-  // Load saved user
-  final authProvider = getIt<AuthProvider>();
-  await authProvider.loadUser();
+  @override
+  State<_BootstrapApp> createState() => _BootstrapAppState();
+}
 
-  // Load locale
-  final localeProvider = getIt<LocaleProvider>();
-  await localeProvider.loadSavedLocale();
+class _BootstrapAppState extends State<_BootstrapApp> {
+  bool _ready = false;
+  Object? _error;
+  AuthProvider? _authProvider;
+  LocaleProvider? _localeProvider;
 
-  runApp(
-    MultiProvider(
+  @override
+  void initState() {
+    super.initState();
+    _initialize();
+  }
+
+  Future<void> _initialize() async {
+    try {
+      // Initialize Firebase
+      await FirebaseConfig.initialize();
+
+      // Setup dependency injection
+      await setupServiceLocator();
+
+      // Load saved user
+      _authProvider = getIt<AuthProvider>();
+      await _authProvider!.loadUser();
+
+      // Load locale
+      _localeProvider = getIt<LocaleProvider>();
+      await _localeProvider!.loadSavedLocale();
+
+      if (!mounted) return;
+      setState(() => _ready = true);
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _error = e);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_error != null) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                'App failed to start.\n$_error',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    if (!_ready || _authProvider == null || _localeProvider == null) {
+      return const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: Center(child: CircularProgressIndicator()),
+        ),
+      );
+    }
+
+    return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: authProvider),
+        ChangeNotifierProvider.value(value: _authProvider!),
         ChangeNotifierProvider(create: (_) => getIt<DashboardProvider>()),
         ChangeNotifierProvider(create: (_) => getIt<EventServiceProvider>()),
         ChangeNotifierProvider(create: (_) => getIt<CategoryProvider>()),
         ChangeNotifierProvider(create: (_) => getIt<NotificationProvider>()),
         ChangeNotifierProvider(create: (_) => getIt<LeadProvider>()),
         ChangeNotifierProvider(create: (_) => getIt<MembershipProvider>()),
-        ChangeNotifierProvider.value(value: localeProvider),
+        ChangeNotifierProvider.value(value: _localeProvider!),
         ChangeNotifierProvider(create: (_) => getIt<BookingProvider>()),
         ChangeNotifierProvider(create: (_) => getIt<ServiceProviderState>()),
       ],
       child: const Bhada24SpApp(),
-    ),
-  );
+    );
+  }
 }
 
 class Bhada24SpApp extends StatelessWidget {

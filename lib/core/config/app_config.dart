@@ -6,7 +6,7 @@ class AppConfig {
   static const String appName = 'Bhada24 SP';
   static const String appVersion = '1.0.0';
   static const String logoUrl =
-      'http://res.cloudinary.com/djapc6r8k/image/upload/v1767765389/s3hzcv0bjptuadgzqven.png';
+      'https://res.cloudinary.com/djapc6r8k/image/upload/v1767765389/s3hzcv0bjptuadgzqven.png';
   static const String countryCode = '+91';
   static const int phoneLength = 10;
   static const int otpLength = 6;

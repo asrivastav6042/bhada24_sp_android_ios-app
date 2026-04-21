@@ -2,11 +2,19 @@
 class EventServiceModel {
   final int? esId;
   final int? spId;
+  final String? ownerName;
+  final String? primaryContact;
+  final String? whatsappNumber;
+  final String? businessName;
   final String? serviceName;
   final String? category;
   final String? subCategory;
+  final String? pincode;
   final String? description;
+  final String? serviceDescription;
   final double? price;
+  final double? minPrice;
+  final double? maxPrice;
   final double? priceMin;
   final double? priceMax;
   final String? pricingType;
@@ -16,7 +24,20 @@ class EventServiceModel {
   final double? latitude;
   final double? longitude;
   final List<String>? imageUrls;
+  final String? serviceImageUrls;
   final String? experience;
+  final int? advanceBookingDays;
+  final bool? availableOnWeekends;
+  final String? ownerIdProofType;
+  final String? ownerIdProofNumber;
+  final String? ownerIdProofUrl;
+  final String? gstNumber;
+  final String? businessRegistrationNumber;
+  final String? businessLicenseUrl;
+  final String? fssaiLicenseNumber;
+  final String? fssaiLicenseUrl;
+  final String? insuranceCertificateUrl;
+  final int? radius;
   final String? availability;
   final bool? active;
   final String? createdAt;
@@ -28,11 +49,19 @@ class EventServiceModel {
   const EventServiceModel({
     this.esId,
     this.spId,
+    this.ownerName,
+    this.primaryContact,
+    this.whatsappNumber,
+    this.businessName,
     this.serviceName,
     this.category,
     this.subCategory,
+    this.pincode,
     this.description,
+    this.serviceDescription,
     this.price,
+    this.minPrice,
+    this.maxPrice,
     this.priceMin,
     this.priceMax,
     this.pricingType,
@@ -42,7 +71,20 @@ class EventServiceModel {
     this.latitude,
     this.longitude,
     this.imageUrls,
+    this.serviceImageUrls,
     this.experience,
+    this.advanceBookingDays,
+    this.availableOnWeekends,
+    this.ownerIdProofType,
+    this.ownerIdProofNumber,
+    this.ownerIdProofUrl,
+    this.gstNumber,
+    this.businessRegistrationNumber,
+    this.businessLicenseUrl,
+    this.fssaiLicenseNumber,
+    this.fssaiLicenseUrl,
+    this.insuranceCertificateUrl,
+    this.radius,
     this.availability,
     this.active,
     this.createdAt,
@@ -53,6 +95,19 @@ class EventServiceModel {
   });
 
   factory EventServiceModel.fromJson(Map<String, dynamic> json) {
+    int? asInt(dynamic value) {
+      if (value == null) return null;
+      if (value is int) return value;
+      if (value is num) return value.toInt();
+      return int.tryParse(value.toString());
+    }
+
+    double? asDouble(dynamic value) {
+      if (value == null) return null;
+      if (value is num) return value.toDouble();
+      return double.tryParse(value.toString());
+    }
+
     // Handle nested wrapper: { listingService: {...}, ratings: [...] }
     final service = json.containsKey('listingService') &&
             json['listingService'] is Map<String, dynamic>
@@ -89,23 +144,45 @@ class EventServiceModel {
     }
 
     return EventServiceModel(
-      esId: service['esId'] as int?,
-      spId: service['spId'] as int?,
+      esId: asInt(service['esId']),
+      spId: asInt(service['spId']),
+      ownerName: service['ownerName'] as String?,
+      primaryContact: service['primaryContact'] as String?,
+      whatsappNumber: service['whatsappNumber'] as String?,
+      businessName: service['businessName'] as String?,
       serviceName: service['serviceName'] as String?,
       category: service['category'] as String?,
       subCategory: service['subCategory'] as String?,
+      pincode: service['pincode'] as String?,
       description: service['description'] as String?,
-      price: (service['price'] as num?)?.toDouble(),
-      priceMin: (service['priceMin'] as num?)?.toDouble(),
-      priceMax: (service['priceMax'] as num?)?.toDouble(),
+      serviceDescription: service['serviceDescription'] as String?,
+      price: asDouble(service['price']),
+      minPrice: asDouble(service['minPrice']),
+      maxPrice: asDouble(service['maxPrice']),
+      priceMin: asDouble(service['priceMin']),
+      priceMax: asDouble(service['priceMax']),
       pricingType: service['pricingType'] as String?,
       city: service['city'] as String?,
       state: service['state'] as String?,
       address: service['address'] as String?,
-      latitude: (service['latitude'] as num?)?.toDouble(),
-      longitude: (service['longitude'] as num?)?.toDouble(),
+      latitude: asDouble(service['latitude']),
+      longitude: asDouble(service['longitude']),
       imageUrls: images,
+      serviceImageUrls: service['serviceImageUrls'] as String?,
       experience: service['experience']?.toString(),
+      advanceBookingDays: asInt(service['advanceBookingDays']),
+      availableOnWeekends: service['availableOnWeekends'] as bool?,
+      ownerIdProofType: service['ownerIdProofType'] as String?,
+      ownerIdProofNumber: service['ownerIdProofNumber'] as String?,
+      ownerIdProofUrl: service['ownerIdProofUrl'] as String?,
+      gstNumber: service['gstNumber'] as String?,
+      businessRegistrationNumber:
+          service['businessRegistrationNumber'] as String?,
+      businessLicenseUrl: service['businessLicenseUrl'] as String?,
+      fssaiLicenseNumber: service['fssaiLicenseNumber'] as String?,
+      fssaiLicenseUrl: service['fssaiLicenseUrl'] as String?,
+      insuranceCertificateUrl: service['insuranceCertificateUrl'] as String?,
+      radius: asInt(service['radius']),
       availability: service['availability'] as String?,
       active: service['active'] as bool?,
       createdAt: service['createdAt'] as String?,
@@ -120,11 +197,19 @@ class EventServiceModel {
     return {
       if (esId != null) 'esId': esId,
       if (spId != null) 'spId': spId,
+      if (ownerName != null) 'ownerName': ownerName,
+      if (primaryContact != null) 'primaryContact': primaryContact,
+      if (whatsappNumber != null) 'whatsappNumber': whatsappNumber,
+      if (businessName != null) 'businessName': businessName,
       if (serviceName != null) 'serviceName': serviceName,
       if (category != null) 'category': category,
       if (subCategory != null) 'subCategory': subCategory,
+      if (pincode != null) 'pincode': pincode,
       if (description != null) 'description': description,
+      if (serviceDescription != null) 'serviceDescription': serviceDescription,
       if (price != null) 'price': price,
+      if (minPrice != null) 'minPrice': minPrice,
+      if (maxPrice != null) 'maxPrice': maxPrice,
       if (priceMin != null) 'priceMin': priceMin,
       if (priceMax != null) 'priceMax': priceMax,
       if (pricingType != null) 'pricingType': pricingType,
@@ -134,7 +219,23 @@ class EventServiceModel {
       if (latitude != null) 'latitude': latitude,
       if (longitude != null) 'longitude': longitude,
       if (imageUrls != null) 'imageUrls': imageUrls,
+      if (serviceImageUrls != null) 'serviceImageUrls': serviceImageUrls,
       if (experience != null) 'experience': experience,
+      if (advanceBookingDays != null) 'advanceBookingDays': advanceBookingDays,
+      if (availableOnWeekends != null)
+        'availableOnWeekends': availableOnWeekends,
+      if (ownerIdProofType != null) 'ownerIdProofType': ownerIdProofType,
+      if (ownerIdProofNumber != null) 'ownerIdProofNumber': ownerIdProofNumber,
+      if (ownerIdProofUrl != null) 'ownerIdProofUrl': ownerIdProofUrl,
+      if (gstNumber != null) 'gstNumber': gstNumber,
+      if (businessRegistrationNumber != null)
+        'businessRegistrationNumber': businessRegistrationNumber,
+      if (businessLicenseUrl != null) 'businessLicenseUrl': businessLicenseUrl,
+      if (fssaiLicenseNumber != null) 'fssaiLicenseNumber': fssaiLicenseNumber,
+      if (fssaiLicenseUrl != null) 'fssaiLicenseUrl': fssaiLicenseUrl,
+      if (insuranceCertificateUrl != null)
+        'insuranceCertificateUrl': insuranceCertificateUrl,
+      if (radius != null) 'radius': radius,
       if (availability != null) 'availability': availability,
       if (active != null) 'active': active,
     };
