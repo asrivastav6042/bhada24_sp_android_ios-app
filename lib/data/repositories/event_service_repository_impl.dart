@@ -45,7 +45,7 @@ class EventServiceRepositoryImpl implements IEventServiceRepository {
         if (list is List) {
           final flat = list.expand((e) => e is List ? e : [e]).toList();
           return flat
-              .where((e) => e is Map<String, dynamic>)
+              .whereType<Map<String, dynamic>>()
               .map((e) =>
                   EventServiceModel.fromJson(e as Map<String, dynamic>))
               .where((e) => e.esId != null)

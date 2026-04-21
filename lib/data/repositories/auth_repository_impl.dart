@@ -91,7 +91,7 @@ class AuthRepositoryImpl implements IAuthRepository {
 
   @override
   Future<ServiceProviderModel?> getUserByMobile(String mobile) async {
-    ServiceProviderModel? _extractUser(dynamic data) {
+    ServiceProviderModel? extractUser(dynamic data) {
       if (data is! Map) return null;
       final code = data['responseCode'];
       if (code != 200 && code != 0) return null;
@@ -105,9 +105,9 @@ class AuthRepositoryImpl implements IAuthRepository {
       return null;
     }
 
-    Future<ServiceProviderModel?> _fetch() async {
+    Future<ServiceProviderModel?> fetch() async {
       final response = await _api.get(ApiConfig.getSpByMobile(mobile));
-      final user = _extractUser(response.data);
+      final user = extractUser(response.data);
       if (user != null) {
         await _saveUserToPrefs(user);
       }
@@ -115,14 +115,14 @@ class AuthRepositoryImpl implements IAuthRepository {
     }
 
     try {
-      return await _fetch();
+      return await fetch();
     } catch (_) {
       try {
         // Retry once after forcing token refresh for protected endpoint calls.
         final user = FirebaseConfig.auth.currentUser;
         if (user == null) return null;
         await user.getIdToken(true);
-        return await _fetch();
+        return await fetch();
       } catch (_) {
         return null;
       }

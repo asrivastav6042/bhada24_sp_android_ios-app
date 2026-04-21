@@ -14,7 +14,7 @@ class LeadRepositoryImpl implements ILeadRepository {
       final data = response.data;
       if (data['responseCode'] == 200 && data['responseData'] is List) {
         return (data['responseData'] as List)
-            .where((e) => e is Map<String, dynamic>)
+            .whereType<Map<String, dynamic>>()
             .map((e) => LeadModel.fromJson(e as Map<String, dynamic>))
             .toList();
       }

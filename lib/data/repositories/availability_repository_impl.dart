@@ -31,14 +31,14 @@ class AvailabilityRepositoryImpl implements IAvailabilityRepository {
       final data = response.data;
       if (data is Map && data['responseData'] is List) {
         return (data['responseData'] as List)
-            .where((e) => e is Map<String, dynamic>)
+            .whereType<Map<String, dynamic>>()
             .map((e) =>
                 AvailabilityExceptionModel.fromJson(e as Map<String, dynamic>))
             .toList();
       }
       if (data is List) {
         return data
-            .where((e) => e is Map<String, dynamic>)
+            .whereType<Map<String, dynamic>>()
             .map((e) =>
                 AvailabilityExceptionModel.fromJson(e as Map<String, dynamic>))
             .toList();

@@ -33,7 +33,7 @@ class CategoryRepositoryImpl implements ICategoryRepository {
           rawList = data['responseData'] as List;
         }
         _cache = rawList
-            .where((e) => e is Map<String, dynamic>)
+            .whereType<Map<String, dynamic>>()
             .map((e) => CategoryModel.fromJson(e as Map<String, dynamic>))
             .toList();
         _cacheTime = DateTime.now();
@@ -70,7 +70,7 @@ class CategoryRepositoryImpl implements ICategoryRepository {
       final data = response.data;
       if (data['responseCode'] == 200 && data['responseData'] is List) {
         return (data['responseData'] as List)
-            .where((e) => e is Map<String, dynamic>)
+            .whereType<Map<String, dynamic>>()
             .map((e) => SubcategoryModel.fromJson(e as Map<String, dynamic>))
             .toList();
       }
