@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bhada24_sp/core/config/firebase_config.dart';
@@ -68,9 +67,9 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
     try {
       if (kIsWeb) {
-        // On web, use signInWithPhoneNumber which handles reCAPTCHA automatically
-        _webConfirmationResult = await FirebaseConfig.auth
-            .signInWithPhoneNumber('+91$phone');
+        _webConfirmationResult = await FirebaseConfig.auth.signInWithPhoneNumber(
+          '+91$phone',
+        );
         _resendTimer = 30;
         _startResendTimer();
         return true;
@@ -106,8 +105,20 @@ class AuthProvider extends ChangeNotifier {
       );
       final result = await completer.future;
       return result;
+    } on FirebaseAuthException catch (e) {
+      if (kIsWeb && e.code == 'invalid-app-credential') {
+        _error =
+            'OTP setup error (INVALID_APP_CREDENTIAL). Add your domain in Firebase Auth > Settings > Authorized domains and ensure API key restrictions allow this origin.';
+      } else if (e.code == 'too-many-requests') {
+        _error = 'Too many attempts. Try again later.';
+      } else if (e.code == 'invalid-phone-number') {
+        _error = 'Invalid phone number.';
+      } else {
+        _error = e.message ?? 'Failed to send OTP.';
+      }
+      return false;
     } catch (e) {
-      _error = 'Failed to send OTP.';
+      _error = 'Failed to send OTP. ${e.toString()}';
       return false;
     } finally {
       _isLoading = false;

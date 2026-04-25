@@ -41,11 +41,14 @@ class EventServiceProvider extends ChangeNotifier {
 
   Future<bool> createService(Map<String, dynamic> payload) async {
     _isLoading = true;
+    _error = null;
     notifyListeners();
     try {
       final success = await _repo.create(payload);
+      if (!success) _error = 'Failed to create service';
       return success;
     } catch (_) {
+      _error = 'Failed to create service';
       return false;
     } finally {
       _isLoading = false;
@@ -55,10 +58,14 @@ class EventServiceProvider extends ChangeNotifier {
 
   Future<bool> updateService(Map<String, dynamic> payload) async {
     _isLoading = true;
+    _error = null;
     notifyListeners();
     try {
-      return await _repo.update(payload);
+      final ok = await _repo.update(payload);
+      if (!ok) _error = 'Failed to update service';
+      return ok;
     } catch (_) {
+      _error = 'Failed to update service';
       return false;
     } finally {
       _isLoading = false;

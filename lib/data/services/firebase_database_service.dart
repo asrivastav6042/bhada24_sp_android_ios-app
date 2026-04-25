@@ -14,7 +14,7 @@ class FirebaseDatabaseService {
     return _notificationsRef(userId).onValue.map((event) {
       final data = event.snapshot.value;
       if (data == null || data is! Map) return <NotificationModel>[];
-      final map = Map<String, dynamic>.from(data as Map);
+      final map = Map<String, dynamic>.from(data);
       final list = map.entries
           .map((e) {
             if (e.value is Map) {

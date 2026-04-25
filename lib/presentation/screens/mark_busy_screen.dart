@@ -90,7 +90,7 @@ class _MarkBusyScreenState extends State<MarkBusyScreen> {
             const Text('Select Service', style: TextStyle(fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
             DropdownButtonFormField<int>(
-              value: _selectedServiceId,
+              initialValue: _selectedServiceId,
               items: services.map((s) => DropdownMenuItem(value: s.esId, child: Text(s.serviceName ?? 'Service ${s.esId}'))).toList(),
               onChanged: (v) {
                 setState(() => _selectedServiceId = v);
