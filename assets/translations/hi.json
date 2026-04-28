@@ -67,6 +67,7 @@
   "dashboard": {
     "title": "डैशबोर्ड",
     "welcome": "स्वागत है",
+    "welcome_message": "अपनी सेवाओं, बुकिंग्स को प्रबंधित करें और अपने व्यवसाय को आसानी से बढ़ाएं।",
     "good_morning": "सुप्रभात",
     "good_afternoon": "नमस्कार",
     "good_evening": "शुभ संध्या",
@@ -75,6 +76,8 @@
     "active": "सक्रिय",
     "inactive": "निष्क्रिय",
     "quick_actions": "त्वरित कार्य",
+    "update_calendar": "बुकिंग तिथियां अपडेट करें",
+    "open_leads_page": "सभी ग्राहक लीड्स देखने के लिए टैप करें",
     "leads_cta": "आपके नए लीड्स प्रतीक्षा कर रहे हैं!",
     "view_leads": "लीड्स देखें"
   },
@@ -205,6 +208,9 @@
     "select_language": "भाषा चुनें",
     "english": "अंग्रेज़ी",
     "hindi": "हिन्दी",
+    "preferences": "प्राथमिकताएं",
+    "support": "सहायता",
+    "version": "संस्करण",
     "notifications": "सूचनाएं",
     "mobile_notifications": "मोबाइल सूचनाएं",
     "email_notifications": "ईमेल सूचनाएं",
@@ -217,6 +223,20 @@
     "privacy_policy": "गोपनीयता नीति",
     "terms_conditions": "नियम एवं शर्तें",
     "contact_support": "सहायता से संपर्क करें"
+  },
+
+  "bottom_nav": {
+    "home": "होम",
+    "bookings": "बुकिंग्स",
+    "manage": "प्रबंधित करें"
+  },
+
+  "user_sidebar": {
+    "manage_profile": "प्रोफाइल प्रबंधित करें",
+    "membership": "सदस्यता",
+    "customer_support": "ग्राहक सहायता",
+    "settings": "सेटिंग्स",
+    "logout": "लॉगआउट"
   },
 
   "manage": {

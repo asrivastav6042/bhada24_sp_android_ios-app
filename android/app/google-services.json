@@ -59,6 +59,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "200383906913-k91igg6s3s4nmdnvd8aonetajck3bu2g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sp.bhada24.com",
+            "certificate_hash": "732a716d0e2c7d338e17226df056d81eebb62772"
+          }
+        },
+        {
           "client_id": "200383906913-ej7o4ikhplon1dr933jvgrunvkm6siu0.apps.googleusercontent.com",
           "client_type": 3
         }

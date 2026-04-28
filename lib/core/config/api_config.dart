@@ -3,6 +3,8 @@
 
 class ApiConfig {
   ApiConfig._();
+  static String _spCodeFromInt(int spId) =>
+      'SP${spId.toString().padLeft(4, '0')}';
 
   static const String baseUrl = 'https://bhada24-services.onrender.com/api';
 
@@ -23,8 +25,7 @@ class ApiConfig {
       '$baseUrl/service-provider/validate/$mobile';
 
   // Notification Settings
-  static String updateNotificationSettings(
-          int spId, bool mobile, bool email) =>
+  static String updateNotificationSettings(int spId, bool mobile, bool email) =>
       '$baseUrl/notification/setting/update/$spId?mobile=$mobile&email=$email';
 
   // Listing Services (Event Services)
@@ -32,7 +33,7 @@ class ApiConfig {
   static String updateListingService(int esId) =>
       '$baseUrl/listing-services/$esId';
   static String getListingServicesBySpId(int spId) =>
-      '$baseUrl/listing-services/sp/$spId';
+      '$baseUrl/listing-services/sp/${_spCodeFromInt(spId)}';
   static String getListingServiceById(int esId) =>
       '$baseUrl/listing-services/$esId';
   static String deleteListingService(int esId) =>
@@ -68,9 +69,9 @@ class ApiConfig {
 
   // Membership
   static String activateFreeMembership(int spId) =>
-      '$baseUrl/membership/activate-free/$spId';
+      '$baseUrl/membership/activate-free/${_spCodeFromInt(spId)}';
   static String getMembershipStatus(int spId) =>
-      '$baseUrl/membership/provider/$spId';
+      '$baseUrl/membership/provider/${_spCodeFromInt(spId)}';
 
   // Ratings
   static String getProviderAverageRating(int spId) =>

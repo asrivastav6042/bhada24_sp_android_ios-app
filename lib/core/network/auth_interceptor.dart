@@ -35,10 +35,19 @@ class AuthInterceptor extends Interceptor {
           // Force refresh the token
           final newToken = await user.getIdToken(true);
           if (newToken != null && newToken.isNotEmpty) {
-            // Retry the request with new token
+            // Retry using the same dio instance (via requestOptions)
             final options = err.requestOptions;
             options.headers['Authorization'] = 'Bearer $newToken';
-            final response = await Dio().fetch(options);
+            // Use a new Dio that inherits the same base options but has the
+            // updated token — avoids re-triggering this interceptor infinitely.
+            final retryDio = Dio(BaseOptions(
+              baseUrl: options.baseUrl,
+              connectTimeout: options.connectTimeout,
+              receiveTimeout: options.receiveTimeout,
+              sendTimeout: options.sendTimeout,
+              headers: options.headers,
+            ));
+            final response = await retryDio.fetch(options);
             return handler.resolve(response);
           }
         }

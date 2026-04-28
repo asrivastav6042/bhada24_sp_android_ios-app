@@ -84,13 +84,7 @@ class AuthProvider extends ChangeNotifier {
           completer.complete(true);
         },
         verificationFailed: (e) {
-          if (e.code == 'too-many-requests') {
-            _error = 'Too many attempts. Try again later.';
-          } else if (e.code == 'invalid-phone-number') {
-            _error = 'Invalid phone number.';
-          } else {
-            _error = 'Failed to send OTP. Try again.';
-          }
+          _error = _mapOtpError(e);
           completer.complete(false);
         },
         codeSent: (vid, resendToken) {
@@ -106,16 +100,7 @@ class AuthProvider extends ChangeNotifier {
       final result = await completer.future;
       return result;
     } on FirebaseAuthException catch (e) {
-      if (kIsWeb && e.code == 'invalid-app-credential') {
-        _error =
-            'OTP setup error (INVALID_APP_CREDENTIAL). Add your domain in Firebase Auth > Settings > Authorized domains and ensure API key restrictions allow this origin.';
-      } else if (e.code == 'too-many-requests') {
-        _error = 'Too many attempts. Try again later.';
-      } else if (e.code == 'invalid-phone-number') {
-        _error = 'Invalid phone number.';
-      } else {
-        _error = e.message ?? 'Failed to send OTP.';
-      }
+      _error = _mapOtpError(e);
       return false;
     } catch (e) {
       _error = 'Failed to send OTP. ${e.toString()}';
@@ -123,6 +108,32 @@ class AuthProvider extends ChangeNotifier {
     } finally {
       _isLoading = false;
       notifyListeners();
+    }
+  }
+
+  String _mapOtpError(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'too-many-requests':
+        return 'Too many OTP requests. Please wait 15-20 minutes before trying again, or use a different phone number.';
+      case 'invalid-phone-number':
+        return 'Invalid phone number.';
+      case 'captcha-check-failed':
+        return 'Security verification failed. Please try again.';
+      case 'app-not-authorized':
+        return 'This app is not authorized for Firebase Phone Auth. Add SHA-1 in Firebase and download fresh google-services.json.';
+      case 'invalid-app-credential':
+        if (kIsWeb) {
+          return 'OTP setup error (INVALID_APP_CREDENTIAL). Add domain in Firebase Auth > Settings > Authorized domains.';
+        }
+        return 'Invalid app credential for Phone Auth. Add SHA-1 in Firebase and rebuild the app.';
+      case 'network-request-failed':
+        return 'Network error while sending OTP. Check internet connection.';
+      default:
+        final details = e.message?.trim();
+        if (details != null && details.isNotEmpty) {
+          return 'Failed to send OTP (${e.code}): $details';
+        }
+        return 'Failed to send OTP (${e.code}).';
     }
   }
 

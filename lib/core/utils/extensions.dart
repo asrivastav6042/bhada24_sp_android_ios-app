@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:bhada24_sp/core/localization/app_localizations.dart';
 
 extension StringExtension on String {
   String get initials {
     if (isEmpty) return 'U';
-    return split(' ')
-        .where((w) => w.isNotEmpty)
-        .take(2)
-        .map((w) => w[0].toUpperCase())
-        .join();
+    return split(
+      ' ',
+    ).where((w) => w.isNotEmpty).take(2).map((w) => w[0].toUpperCase()).join();
   }
 
   bool get isUrl =>
-      startsWith('http://') ||
-      startsWith('https://') ||
-      startsWith('//');
+      startsWith('http://') || startsWith('https://') || startsWith('//');
 }
 
 extension ContextExtension on BuildContext {
@@ -32,6 +29,12 @@ extension ContextExtension on BuildContext {
         duration: const Duration(seconds: 3),
       ),
     );
+  }
+
+  String t(String key, {String? fallback, Map<String, dynamic>? args}) {
+    final value = AppLocalizations.of(this).tr(key, args);
+    if (value == key && fallback != null) return fallback;
+    return value;
   }
 }
 

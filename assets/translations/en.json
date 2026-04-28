@@ -67,6 +67,7 @@
   "dashboard": {
     "title": "Dashboard",
     "welcome": "Welcome",
+    "welcome_message": "Manage your services, bookings, and grow your business effortlessly.",
     "good_morning": "Good Morning",
     "good_afternoon": "Good Afternoon",
     "good_evening": "Good Evening",
@@ -75,6 +76,8 @@
     "active": "Active",
     "inactive": "Inactive",
     "quick_actions": "Quick Actions",
+    "update_calendar": "Update Booking Dates",
+    "open_leads_page": "Tap to view all customer leads",
     "leads_cta": "You have new leads waiting!",
     "view_leads": "View Leads"
   },
@@ -205,6 +208,9 @@
     "select_language": "Select Language",
     "english": "English",
     "hindi": "Hindi",
+    "preferences": "Preferences",
+    "support": "Support",
+    "version": "Version",
     "notifications": "Notifications",
     "mobile_notifications": "Mobile Notifications",
     "email_notifications": "Email Notifications",
@@ -217,6 +223,20 @@
     "privacy_policy": "Privacy Policy",
     "terms_conditions": "Terms & Conditions",
     "contact_support": "Contact Support"
+  },
+
+  "bottom_nav": {
+    "home": "Home",
+    "bookings": "Bookings",
+    "manage": "Manage"
+  },
+
+  "user_sidebar": {
+    "manage_profile": "Manage Profile",
+    "membership": "Membership",
+    "customer_support": "Customer Support",
+    "settings": "Settings",
+    "logout": "Logout"
   },
 
   "manage": {

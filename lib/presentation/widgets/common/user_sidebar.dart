@@ -19,128 +19,257 @@ class UserSidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sidebarWidth = (MediaQuery.of(context).size.width * 0.72).clamp(
+      280.0,
+      340.0,
+    );
+    final userCode =
+        user.spId != null
+            ? 'SP${user.spId.toString().padLeft(4, '0')}'
+            : 'SP0000';
+
     return Container(
-      width: 280,
+      width: sidebarWidth,
       height: double.infinity,
       color: Colors.white,
       child: SafeArea(
         child: Column(
           children: [
             // User header
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                gradient: AppColors.primaryGradient,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: InkWell(
+                  onTap: onClose,
+                  borderRadius: BorderRadius.circular(8),
+                  child: Container(
+                    height: 44,
+                    width: 44,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF1F4F9),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(
+                      Icons.close,
+                      color: Color(0xFF64748B),
+                      size: 34,
+                    ),
+                  ),
+                ),
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.close, color: Colors.white),
-                        onPressed: onClose,
+                  Container(
+                    width: 112,
+                    height: 112,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF7F9FC),
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: const Color(0xFFD5DFEB),
+                        width: 3,
                       ),
-                    ],
+                    ),
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundColor: const Color(0xFFE9EFF7),
+                      backgroundImage:
+                          user.imageUrl != null &&
+                                  user.imageUrl!.isNotEmpty &&
+                                  user.imageUrl != 'null'
+                              ? CachedNetworkImageProvider(user.imageUrl!)
+                              : null,
+                      child:
+                          user.imageUrl == null ||
+                                  user.imageUrl!.isEmpty ||
+                                  user.imageUrl == 'null'
+                              ? Text(
+                                (user.name ?? 'U').initials,
+                                style: const TextStyle(
+                                  fontSize: 34,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF9AA8BA),
+                                ),
+                              )
+                              : null,
+                    ),
                   ),
-                  CircleAvatar(
-                    radius: 36,
-                    backgroundColor: Colors.white.withValues(alpha: 0.2),
-                    backgroundImage: user.imageUrl != null &&
-                            user.imageUrl!.isNotEmpty &&
-                            user.imageUrl != 'null'
-                        ? CachedNetworkImageProvider(user.imageUrl!)
-                        : null,
-                    child: user.imageUrl == null ||
-                            user.imageUrl!.isEmpty ||
-                            user.imageUrl == 'null'
-                        ? Text(
-                            (user.name ?? 'U').initials,
-                            style: const TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                          )
-                        : null,
-                  ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 14),
                   Text(
                     user.name ?? 'User',
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 24 * 0.75,
                       fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                     ),
                   ),
-                  if (user.phone != null)
-                    Text(
-                      '+91 ${user.phone}',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.white.withValues(alpha: 0.8),
+                  if ((user.email ?? '').isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text(
+                        user.email!,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 14 * 0.75,
+                          color: AppColors.textSecondary,
+                        ),
                       ),
                     ),
+                  if ((user.phone ?? '').isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 2),
+                      child: Text(
+                        '+91 ${user.phone}',
+                        style: const TextStyle(
+                          fontSize: 14 * 0.75,
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                    ),
+                  const SizedBox(height: 10),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF3F6FA),
+                      border: Border.all(color: const Color(0xFFDDE4EE)),
+                    ),
+                    child: Text(
+                      'ID: $userCode',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF4A5568),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFF6DB),
+                      borderRadius: BorderRadius.circular(24),
+                      border: Border.all(
+                        color: const Color(0xFFF1C54B),
+                        width: 1.5,
+                      ),
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.star, color: Color(0xFFE1BF66), size: 18),
+                        SizedBox(width: 4),
+                        Icon(Icons.star, color: Color(0xFFE1BF66), size: 18),
+                        SizedBox(width: 4),
+                        Icon(Icons.star, color: Color(0xFFE1BF66), size: 18),
+                        SizedBox(width: 4),
+                        Icon(Icons.star, color: Color(0xFFE1BF66), size: 18),
+                        SizedBox(width: 4),
+                        Icon(Icons.star, color: Color(0xFFE1BF66), size: 18),
+                        SizedBox(width: 8),
+                        Text(
+                          '0.0/5',
+                          style: TextStyle(
+                            color: Color(0xFF8B4B1B),
+                            fontSize: 16 * 0.75,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
+            const Divider(height: 1, color: AppColors.divider),
             // Menu items
             Expanded(
               child: ListView(
-                padding: EdgeInsets.zero,
+                padding: const EdgeInsets.symmetric(vertical: 12),
                 children: [
                   _MenuItem(
-                    icon: Icons.person_outline,
-                    label: 'Profile',
+                    icon: Icons.manage_accounts,
+                    label: context.t(
+                      'user_sidebar.manage_profile',
+                      fallback: 'Manage Profile',
+                    ),
                     onTap: () {
                       onClose();
                       context.push('/profile');
                     },
                   ),
                   _MenuItem(
+                    icon: Icons.add_circle,
+                    label: context.t(
+                      'services.add_service',
+                      fallback: 'Add Service',
+                    ),
+                    onTap: () {
+                      onClose();
+                      context.push('/add-service');
+                    },
+                  ),
+                  _MenuItem(
+                    icon: Icons.handyman,
+                    label: context.t(
+                      'manage.manage_services',
+                      fallback: 'Manage Services',
+                    ),
+                    onTap: () {
+                      onClose();
+                      context.push('/manage');
+                    },
+                  ),
+                  _MenuItem(
                     icon: Icons.card_membership,
-                    label: 'Membership',
+                    label: context.t(
+                      'user_sidebar.membership',
+                      fallback: 'Membership',
+                    ),
                     onTap: () {
                       onClose();
                       context.push('/membership');
                     },
                   ),
                   _MenuItem(
-                    icon: Icons.settings_outlined,
-                    label: 'Settings',
-                    onTap: () {
-                      onClose();
-                      context.push('/settings');
-                    },
-                  ),
-                  _MenuItem(
                     icon: Icons.support_agent,
-                    label: 'Contact',
+                    label: context.t(
+                      'user_sidebar.customer_support',
+                      fallback: 'Customer Support',
+                    ),
                     onTap: () {
                       onClose();
                       context.push('/contact');
                     },
                   ),
                   _MenuItem(
-                    icon: Icons.privacy_tip_outlined,
-                    label: 'Privacy Policy',
+                    icon: Icons.settings,
+                    label: context.t(
+                      'user_sidebar.settings',
+                      fallback: 'Settings',
+                    ),
                     onTap: () {
                       onClose();
-                      context.push('/privacy-policy');
+                      context.push('/settings');
                     },
                   ),
-                  _MenuItem(
-                    icon: Icons.description_outlined,
-                    label: 'Terms & Conditions',
-                    onTap: () {
-                      onClose();
-                      context.push('/terms-and-conditions');
-                    },
+                  const SizedBox(height: 14),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Divider(color: AppColors.divider),
                   ),
-                  const Divider(),
                   _MenuItem(
                     icon: Icons.logout,
-                    label: 'Logout',
+                    label: context.t('user_sidebar.logout', fallback: 'Logout'),
                     color: AppColors.error,
                     onTap: onLogout,
                   ),
@@ -170,17 +299,21 @@ class _MenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon, color: color ?? AppColors.textSecondary),
+      leading: Icon(
+        icon,
+        color: color ?? const Color(0xFF71839E),
+        size: 34 * 0.75,
+      ),
       title: Text(
         label,
         style: TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
+          fontSize: 22 * 0.75,
+          fontWeight: FontWeight.w700,
           color: color ?? AppColors.textPrimary,
         ),
       ),
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 22, vertical: 2),
     );
   }
 }

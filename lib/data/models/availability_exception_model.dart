@@ -19,12 +19,22 @@ class AvailabilityExceptionModel {
   });
 
   factory AvailabilityExceptionModel.fromJson(Map<String, dynamic> json) {
+    int? asInt(dynamic value) {
+      if (value == null) return null;
+      if (value is int) return value;
+      if (value is num) return value.toInt();
+      return int.tryParse(value.toString());
+    }
+
     return AvailabilityExceptionModel(
-      exceptionId: json['exceptionId'] as int?,
+      exceptionId: asInt(json['id'] ?? json['exceptionId']),
       serviceType: json['serviceType'] as String?,
-      serviceId: json['serviceId'] as int?,
-      startDate: json['startDate'] as String?,
-      endDate: json['endDate'] as String?,
+      serviceId: asInt(json['serviceId']),
+      startDate:
+          (json['unavailableFrom'] ?? json['startDate'] ?? json['from'])
+              as String?,
+      endDate:
+          (json['unavailableTo'] ?? json['endDate'] ?? json['to']) as String?,
       reason: json['reason'] as String?,
       createdAt: json['createdAt'] as String?,
     );
@@ -32,8 +42,8 @@ class AvailabilityExceptionModel {
 
   Map<String, dynamic> toJson() {
     return {
-      if (startDate != null) 'startDate': startDate,
-      if (endDate != null) 'endDate': endDate,
+      if (startDate != null) 'unavailableFrom': startDate,
+      if (endDate != null) 'unavailableTo': endDate,
       if (reason != null) 'reason': reason,
     };
   }

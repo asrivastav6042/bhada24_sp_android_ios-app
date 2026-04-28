@@ -76,4 +76,49 @@ class LocationSuggestionService {
       );
     }).toList();
   }
+
+  Future<LocationSuggestion?> reverseGeocode({
+    required double latitude,
+    required double longitude,
+  }) async {
+    final uri = Uri.https('nominatim.openstreetmap.org', '/reverse', {
+      'lat': latitude.toString(),
+      'lon': longitude.toString(),
+      'format': 'jsonv2',
+      'addressdetails': '1',
+      'zoom': '18',
+    });
+
+    final response = await _dio.getUri(
+      uri,
+      options: Options(
+        headers: const {
+          'User-Agent': 'bhada24-sp-app/1.0 (support@bhada24.com)',
+        },
+      ),
+    );
+
+    final data = response.data;
+    if (data is! Map) return null;
+
+    final addressMap = (data['address'] is Map) ? data['address'] as Map : {};
+    final city = (addressMap['city'] ??
+            addressMap['town'] ??
+            addressMap['village'] ??
+            addressMap['municipality'] ??
+            '')
+        .toString();
+    final state = (addressMap['state'] ?? '').toString();
+    final pincode = (addressMap['postcode'] ?? '').toString();
+    final displayName = (data['display_name'] ?? '').toString();
+
+    return LocationSuggestion(
+      address: displayName,
+      city: city,
+      state: state,
+      pincode: pincode,
+      latitude: latitude,
+      longitude: longitude,
+    );
+  }
 }

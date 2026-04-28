@@ -55,18 +55,33 @@ class AppRouter {
         GoRoute(path: '/login', builder: (_, __) => const LoginScreen()),
         GoRoute(path: '/register', builder: (_, __) => const RegisterScreen()),
         GoRoute(path: '/forgot-password', builder: (_, __) => const ForgotPasswordScreen()),
-        GoRoute(path: '/dashboard', builder: (_, __) => const DashboardScreen()),
-        GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
-        GoRoute(path: '/add-service', builder: (_, __) => const AddServiceScreen()),
+        GoRoute(
+          path: '/dashboard',
+          pageBuilder: (_, __) => _noTransitionPage(const DashboardScreen()),
+        ),
+        GoRoute(
+          path: '/profile',
+          pageBuilder: (_, __) => _noTransitionPage(const ProfileScreen()),
+        ),
+        GoRoute(
+          path: '/add-service',
+          pageBuilder: (_, __) => _noTransitionPage(const AddServiceScreen()),
+        ),
         GoRoute(path: '/add-listing-service', builder: (_, __) => const AddListingServiceScreen()),
         GoRoute(
           path: '/edit-listing-service/:esId',
           builder: (_, state) => EditListingServiceScreen(esId: state.pathParameters['esId']!),
         ),
-        GoRoute(path: '/manage', builder: (_, __) => const ManageScreen()),
+        GoRoute(
+          path: '/manage',
+          pageBuilder: (_, __) => _noTransitionPage(const ManageScreen()),
+        ),
         GoRoute(path: '/manage-listing-services', builder: (_, __) => const ManageListingServicesScreen()),
         GoRoute(path: '/view-my-services', builder: (_, __) => const ViewMyServicesScreen()),
-        GoRoute(path: '/booking-calendar', builder: (_, __) => const BookingCalendarScreen()),
+        GoRoute(
+          path: '/booking-calendar',
+          pageBuilder: (_, __) => _noTransitionPage(const BookingCalendarScreen()),
+        ),
         GoRoute(path: '/mark-busy', builder: (_, __) => const MarkBusyScreen()),
         GoRoute(path: '/membership', builder: (_, __) => const MembershipScreen()),
         GoRoute(path: '/settings', builder: (_, __) => const SettingsScreen()),
@@ -77,6 +92,15 @@ class AppRouter {
         GoRoute(path: '/privacy-policy', builder: (_, __) => const PrivacyPolicyScreen()),
         GoRoute(path: '/terms-and-conditions', builder: (_, __) => const TermsConditionsScreen()),
       ],
+    );
+  }
+
+  static CustomTransitionPage<void> _noTransitionPage(Widget child) {
+    return CustomTransitionPage<void>(
+      child: child,
+      transitionDuration: Duration.zero,
+      reverseTransitionDuration: Duration.zero,
+      transitionsBuilder: (_, __, ___, child) => child,
     );
   }
 }

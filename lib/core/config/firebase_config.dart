@@ -27,6 +27,14 @@ class FirebaseConfig {
             )
           : null,
     );
+    
+    // In debug Android builds, disable app verification to avoid browser flow.
+    // Keep verification enabled for release builds.
+    if (!kIsWeb && kDebugMode) {
+      await auth.setSettings(
+        appVerificationDisabledForTesting: true,
+      );
+    }
   }
 
   static const String vapidKey =

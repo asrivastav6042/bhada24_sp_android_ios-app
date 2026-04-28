@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:bhada24_sp/core/theme/app_colors.dart';
-import 'package:bhada24_sp/presentation/widgets/common/app_header.dart';
+import 'package:bhada24_sp/presentation/widgets/common/bottom_nav.dart';
 
 class ContactScreen extends StatelessWidget {
   const ContactScreen({super.key});
@@ -9,49 +9,213 @@ class ContactScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppHeader(title: 'Contact Us'),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(children: [
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16),
-                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.06), blurRadius: 12)]),
-            child: Column(children: [
-              const Icon(Icons.support_agent, size: 48, color: AppColors.primary),
-              const SizedBox(height: 12),
-              const Text('Need Help?', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
-              const SizedBox(height: 8),
-              const Text('We\'re here to assist you.', style: TextStyle(color: AppColors.textSecondary)),
-              const SizedBox(height: 24),
-              _contactItem(Icons.email, 'Email', 'support@bhada24.com', () => launchUrl(Uri.parse('mailto:support@bhada24.com'))),
-              _contactItem(Icons.phone, 'Phone', '+91 9876543210', () => launchUrl(Uri.parse('tel:+919876543210'))),
-              _contactItem(Icons.language, 'Website', 'www.bhada24.com', () => launchUrl(Uri.parse('https://www.bhada24.com'))),
-            ]),
+      backgroundColor: const Color(0xFFF4F6FA),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: AppColors.textPrimary,
+        elevation: 0,
+        titleSpacing: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+          onPressed: () => Navigator.of(context).maybePop(),
+        ),
+        title: const Text(
+          'Contact Us',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: AppColors.textPrimary,
           ),
-        ]),
+        ),
+      ),
+      bottomNavigationBar: const BottomNav(),
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 24),
+        children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+            margin: const EdgeInsets.only(bottom: 14),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.04),
+                  blurRadius: 8,
+                ),
+              ],
+            ),
+            child: const Row(
+              children: [
+                Icon(
+                  Icons.headset_mic_outlined,
+                  color: Color(0xFF7466D7),
+                  size: 18,
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    'We are here to help you. Reach out via any of the methods below.',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.textSecondary,
+                      height: 1.4,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          _contactItem(
+            icon: Icons.phone_outlined,
+            title: 'Call Support',
+            subtitle: '+91 9140251119',
+            actionLabel: 'Call',
+            onTap: () => launchUrl(Uri.parse('tel:+919140251119')),
+          ),
+          const SizedBox(height: 10),
+          _contactItem(
+            icon: Icons.email_outlined,
+            title: 'Email Support',
+            subtitle: 'support@bhada24.com',
+            actionLabel: 'Email',
+            onTap: () => launchUrl(Uri.parse('mailto:support@bhada24.com')),
+          ),
+          const SizedBox(height: 10),
+          const _StaticContactItem(
+            icon: Icons.location_on_outlined,
+            title: 'Office Location',
+            subtitle: 'Varanasi, Uttar Pradesh, India',
+          ),
+        ],
       ),
     );
   }
 
-  static Widget _contactItem(IconData icon, String label, String value, VoidCallback onTap) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+  static Widget _contactItem({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required String actionLabel,
+    required VoidCallback onTap,
+  }) {
+    return Material(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10),
       child: InkWell(
         onTap: onTap,
-        child: Row(children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.08), borderRadius: BorderRadius.circular(12)),
-            child: Icon(icon, color: AppColors.primary),
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 8)],
           ),
-          const SizedBox(width: 16),
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(label, style: const TextStyle(fontSize: 13, color: AppColors.textSecondary)),
-            Text(value, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: AppColors.primary)),
-          ]),
-        ]),
+          child: Row(
+            children: [
+              Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF1EDFF),
+                  borderRadius: BorderRadius.circular(9),
+                ),
+                child: Icon(icon, color: const Color(0xFF7466D7), size: 20),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                    Text(
+                      subtitle,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                actionLabel,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF7466D7),
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StaticContactItem extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String subtitle;
+
+  const _StaticContactItem({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 8)],
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 38,
+            height: 38,
+            decoration: BoxDecoration(
+              color: const Color(0xFFF1EDFF),
+              borderRadius: BorderRadius.circular(9),
+            ),
+            child: Icon(icon, color: const Color(0xFF7466D7), size: 20),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+                Text(
+                  subtitle,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

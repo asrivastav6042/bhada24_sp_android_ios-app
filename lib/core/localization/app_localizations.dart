@@ -15,24 +15,24 @@ class AppLocalizations {
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
 
-  static const List<Locale> supportedLocales = [
-    Locale('en'),
-    Locale('hi'),
-  ];
+  static const List<Locale> supportedLocales = [Locale('en'), Locale('hi')];
 
   Map<String, dynamic> _strings = {};
 
   Future<bool> load() async {
     final jsonString = await rootBundle.loadString(
-        'assets/translations/${locale.languageCode}.json');
+      'assets/translations/${locale.languageCode}.json',
+    );
     final jsonMap = json.decode(jsonString) as Map<String, dynamic>;
     _strings = _flatten(jsonMap);
     return true;
   }
 
   /// Flatten nested JSON to dot-notation keys e.g. "auth.login"
-  Map<String, dynamic> _flatten(Map<String, dynamic> map,
-      [String prefix = '']) {
+  Map<String, dynamic> _flatten(
+    Map<String, dynamic> map, [
+    String prefix = '',
+  ]) {
     final result = <String, dynamic>{};
     map.forEach((key, value) {
       final newKey = prefix.isEmpty ? key : '$prefix.$key';
@@ -40,17 +40,21 @@ class AppLocalizations {
         result.addAll(_flatten(value, newKey));
       } else {
         result[newKey] = value;
+        result[newKey.toLowerCase()] = value;
       }
     });
     return result;
   }
 
-  /// Translate a key (dot notation). Supports {placeholder} substitution.
-  String tr(String key, [Map<String, String>? args]) {
-    String text = (_strings[key] ?? key) as String;
+  /// Translate a key (dot notation). Supports both {placeholder} and {{placeholder}} substitution.
+  String tr(String key, [Map<String, dynamic>? args]) {
+    final resolved = _strings[key] ?? _strings[key.toLowerCase()] ?? key;
+    String text = resolved.toString();
     if (args != null) {
       args.forEach((k, v) {
-        text = text.replaceAll('{$k}', v);
+        final value = v.toString();
+        text = text.replaceAll('{$k}', value);
+        text = text.replaceAll('{{$k}}', value);
       });
     }
     return text;
@@ -164,8 +168,7 @@ class _AppLocalizationsDelegate
   const _AppLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) =>
-      ['en', 'hi'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => ['en', 'hi'].contains(locale.languageCode);
 
   @override
   Future<AppLocalizations> load(Locale locale) async {

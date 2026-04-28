@@ -5,7 +5,13 @@ class ServiceProviderModel {
   final String? email;
   final String? phone;
   final String? role;
+  final bool? verified;
   final String? imageUrl;
+  final String? gender;
+  final String? dateOfBirth;
+  final String? status;
+  final bool? mobileNotification;
+  final bool? emailNotification;
   final String? address;
   final String? city;
   final String? state;
@@ -25,7 +31,13 @@ class ServiceProviderModel {
     this.email,
     this.phone,
     this.role,
+    this.verified,
     this.imageUrl,
+    this.gender,
+    this.dateOfBirth,
+    this.status,
+    this.mobileNotification,
+    this.emailNotification,
     this.address,
     this.city,
     this.state,
@@ -53,12 +65,18 @@ class ServiceProviderModel {
     }
 
     return ServiceProviderModel(
-      spId: parseSpId(json['spId']),
+      spId: parseSpId(json['spId'] ?? json['id'] ?? json['providerId']),
       name: json['name'] as String?,
       email: json['email'] as String?,
       phone: json['phone'] as String?,
       role: json['role'] as String?,
+      verified: json['verified'] as bool?,
       imageUrl: json['imageUrl'] as String?,
+      gender: json['gender'] as String?,
+      dateOfBirth: json['dateOfBirth'] as String?,
+      status: json['status'] as String?,
+      mobileNotification: json['mobile_notification'] as bool?,
+      emailNotification: json['email_notification'] as bool?,
       address: json['address'] as String?,
       city: json['city'] as String?,
       state: json['state'] as String?,
@@ -81,7 +99,13 @@ class ServiceProviderModel {
       if (email != null) 'email': email,
       if (phone != null) 'phone': phone,
       if (role != null) 'role': role,
+      if (verified != null) 'verified': verified,
       if (imageUrl != null) 'imageUrl': imageUrl,
+      if (gender != null) 'gender': gender,
+      if (dateOfBirth != null) 'dateOfBirth': dateOfBirth,
+      if (status != null) 'status': status,
+      if (mobileNotification != null) 'mobile_notification': mobileNotification,
+      if (emailNotification != null) 'email_notification': emailNotification,
       if (address != null) 'address': address,
       if (city != null) 'city': city,
       if (state != null) 'state': state,
@@ -101,7 +125,13 @@ class ServiceProviderModel {
     String? email,
     String? phone,
     String? role,
+    bool? verified,
     String? imageUrl,
+    String? gender,
+    String? dateOfBirth,
+    String? status,
+    bool? mobileNotification,
+    bool? emailNotification,
     String? address,
     String? city,
     String? state,
@@ -112,6 +142,8 @@ class ServiceProviderModel {
     double? longitude,
     String? language,
     bool? active,
+    String? createdAt,
+    String? updatedAt,
   }) {
     return ServiceProviderModel(
       spId: spId ?? this.spId,
@@ -119,7 +151,13 @@ class ServiceProviderModel {
       email: email ?? this.email,
       phone: phone ?? this.phone,
       role: role ?? this.role,
+      verified: verified ?? this.verified,
       imageUrl: imageUrl ?? this.imageUrl,
+      gender: gender ?? this.gender,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      status: status ?? this.status,
+      mobileNotification: mobileNotification ?? this.mobileNotification,
+      emailNotification: emailNotification ?? this.emailNotification,
       address: address ?? this.address,
       city: city ?? this.city,
       state: state ?? this.state,
@@ -130,8 +168,13 @@ class ServiceProviderModel {
       longitude: longitude ?? this.longitude,
       language: language ?? this.language,
       active: active ?? this.active,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
+  }
+
+  String get spCode {
+    if (spId == null) return '';
+    return 'SP${spId!.toString().padLeft(4, '0')}';
   }
 }

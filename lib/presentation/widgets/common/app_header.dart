@@ -19,22 +19,23 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.primary,
-      foregroundColor: Colors.white,
+      backgroundColor: Colors.white,
+      foregroundColor: AppColors.textPrimary,
       elevation: 0,
-      centerTitle: true,
+      centerTitle: false,
+      titleSpacing: 0,
       leading: showBack
           ? IconButton(
-              icon: const Icon(Icons.arrow_back_ios, size: 20),
+              icon: const Icon(Icons.arrow_back_ios_new, size: 20),
               onPressed: () => Navigator.of(context).pop(),
             )
           : null,
       title: Text(
         title,
         style: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
         ),
       ),
       actions: actions,
